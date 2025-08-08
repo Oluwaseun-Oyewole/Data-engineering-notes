@@ -1,146 +1,373 @@
-Database notes
+# Database Study Notes
 
-Object oriented database - data is stored in form of objects
-Graph database - data is stored in node and relationship between them is stored as edges
-Document database - data is stored as JSON. Data is organized into collections like tables
+## Database Types
 
-Note: Database can be stored on-prem or in the cloud.
+### Object-Oriented Database
 
-TERMS TO KNOW
-Relational database store structured data in a tabular format
-noSQL database store database in different format. It provides a flexible structure for storing and scaling data.
-types of noSQL db includes document, graph database, key-value database
-Big data - data that can grow exponentially with time. It comes from social media platforms, e-commerce platform, etc.
-Cloud database - storing data in the cloud instead of on-prem devices
-Business intelligence - analyzing data and other information to make informed decisions
+- Data is stored in the form of objects
 
-WHAT IS A TABLE
-Table is made of rows and columns. A table is also know as an entity.
-Column - fields, attributes
-Row - record,
+### Graph Database
 
-KEYS IN TABLE
-Relationship are established between database with the use of keys
-A candidate key is unique column|attribute to each row
-Composite key is a combination of 2 or more attributes
-Alternate key is a candidate key
-Foreign key points to the unique in another table
+- Data is stored in nodes
+- Relationships between nodes are stored as edges
 
-KEYS
-Super key - any number of columns that creates unique rows. A row that forces the database to be unique.
-Candidate-key - least number of columns needed to force the row to be unique
-Primary key — Surrogate key, natural key
-Alternate key - enforces uniqueness but they are not used as a primary key in that table
-Foreign keys - references the primary key in a separate table
-Simple key - 1 column
-Composite key - 2 or more columns
-Compound key
+### Document Database
 
-Database constraints — NOT NULL, DEFAULT, FOREIGN KEY
+- Data is stored as JSON
+- Data is organized into collections (similar to tables)
 
-DATA TYPES
-Data types — Numeric, string, binary, date and time
-String data types - tiny text, text, medium text, long text categorized into CHAR(fixed length ) and VARCHAR(variable length)
-Numeric data types — Integer, decimal
+**Note:** Databases can be stored on-premises or in the cloud.
 
-DATABASE SYSTEM 0. Data definition language - CREATE, ALTER, DROP 0. Data manipulation language - INSERT, UPDATE, DELETE 0. Data query language - SELECT 0. Data transactions language 0. Data control language -
+## Key Terms to Know
 
-DATABASE COMMANDS
-SELECT DISTINCT from table;
-WHERE
-CREATE
-SHOW
-ALTER
-ORDER BY
-BETWEEN
-IN
-ALIAS - AS
-JOIN
-LIKE - this is used for pattern matching..
-CONCAT - join columns together
+### Relational Database
 
-DATABASE SCHEMA
-Definition: collection of data structures within a database and their relationships
-In a SQL server, a database schema is a collection of different component like table,
-Types of database schema 0. Logical DB schema - uses ER modeling. It involves showing relationship between table components 0. Physical DB schema
+- Store structured data in a tabular format
 
-DATABASE NORMALIZATION
+### NoSQL Database
 
-THE GOAL OF NORMALIZATION IS TO REMOVE DATA DUPLICATION.
+- Store data in different formats
+- Provide flexible structure for storing and scaling data
+- **Types of NoSQL databases:**
+  - Document databases
+  - Graph databases
+  - Key-value databases
 
-Database normalization challenges -
-insert anomaly, update an deletion anomaly.
-insert anomaly - when an insertion of new data requires the addition of another data.
+### Big Data
 
-Database normalization helps to prevent data duplication. It optimizes the database design by creating a single purpose for each table.
-Database normalization forms include 1NF, 2NF, 3NF.
+- Data that can grow exponentially with time
+- Sources: social media platforms, e-commerce platforms, etc.
 
-Functional dependency explains the relationship between 2 attributes in a table.
-Partial dependency refer to a table with composite keys
+### Cloud Database
 
-1NF — atomicity rule. Your table should have one value per column field. Avoid repeating attribute in tables.
-2NF — all non keys attributes must depend on the entire primary key value. This also deals with eliminating partial dependency,
-this is when a column only depends on parts of the primary key.
-Ideally for 2NF, remove all partial dependency and put it into it’s own separate table.
-3NF — This deals with eliminating transitive dependency. A non key attribute should not depend on another non-key attribute. It should only depend on unique key attribute.
+- Storing data in the cloud instead of on-premises devices
 
-LOGICAL OPERATORS
-Filtering data in SQL involves using logical operators like AND, OR, NOT, BETWEEN, IN, LIKE
-BETWEEN — lets you select value within a given range
-LIKE — to filter data based on pattern matching
-IN — let’s you include multiple values in the WHERE clause, This behaves like multiple OR’s
+### Business Intelligence
 
-ALIASES IN DATABASE
-SQL aliases provides database columns and tables with temporary name
+- Analyzing data and other information to make informed decisions
 
-Types of join
-Joins are used to combine tables
-inner join - extracts or select records of data that has matching values between both tables (left & right tables)
-Left join - extracts or select records of data from the left and all matching record from the right table
-Right join - extracts or select records of data from the right and matching record from the left table
-Self join - a table is joined with itself to retrieve info that exists within the same table
+## Tables
 
-INNER JOIN
+### What is a Table?
 
-INNER JOIN CODE SNIPPET
-Question: Let say I have 2 tables, one for customers, orders. Combine a table with inner for both customer and order
-Answer: select customer.customerName from customer inner join orders on customer.customerID = orders.customerID;
+- Made of rows and columns
+- Also known as an **entity**
+- **Column:** fields, attributes
+- **Row:** record
 
-LEFT JOIN
+## Database Keys
 
-select c.customerName, c.lastName, o.orderId, o.orderDate, o.quantity, o.totalAmount from customer as c left join orders as o on c.customerId=o.customerId;
-LEFT JOIN EXECUTION
+Relationships are established between databases using keys.
 
-RIGHT JOIN
+### Key Types
 
-RIGHT JOIN CODE SNIPPET
-select c.customerName, c.lastName, o.orderId, o.orderDate, o.quantity, o.totalAmount from customer as c right join orders as o on c.customerId=o.customerId;
+#### Super Key
 
-OPERATORS
-Union - to combine result set from multiple statements in the same query. You can join 2 select statements in order to join their result and present as one table
-Group by - group similar values into a single record (select customerID from orders group by customerID). You can also use it with SQL aggregate functions like sum, count, etc…
-Having - it specifies a filter condition for the groups of rows and aggregate. It should be used with group by command
+- Any number of columns that create unique rows
+- Forces the database to be unique
 
-MYSQL Constraints
-Types of constraints
-Key constraints - like primary key which should always be unique.
-Domain constraints - restriction on column using check
-Referential integrity constraints - for both primary key and foreign key in a referencing table and referenced table
+#### Candidate Key
 
-BASIC SQL SYNTAX
-Alter - modify, add and drop.
-Copy table in mysql - create table new_table-name select \* from exiting_table_name.
-subQuery - this is a query within another query. An inner query placed within an outer query.
-Commands to use with sub query includes ANY, ALL, SOME, EXIST, NOT EXISTS
+- Unique column/attribute for each row
+- Least number of columns needed to force the row to be unique
 
-VIRTUAL TABLES IN MYSQL
-Views are virtual tables created from one or multiple tables depending on the requirements.
-Views can be used to create subset of a table’s data
-Views can also be used to combine data from multiple table.
+#### Primary Key
 
-FUNCTIONS AND TYPE IN MYSQL
-Numeric
-String
-Control flow
+- **Types:**
+  - Surrogate key
+  - Natural key
 
-What is stored procedures - a block that code that can stored in your database and re-invoke when needed.the key difference between a function and a stored procedure is parameter. A function only have input parameter while stored procedure can have both input and output parameter.
+#### Alternate Key
+
+- A candidate key that enforces uniqueness but is not used as a primary key in that table
+
+#### Foreign Key
+
+- Points to the unique key in another table
+- References the primary key in a separate table
+
+#### Simple Key
+
+- 1 column
+
+#### Composite Key
+
+- Combination of 2 or more attributes/columns
+
+#### Compound Key
+
+- Similar to composite key
+
+## Database Constraints
+
+- `NOT NULL`
+- `DEFAULT`
+- `FOREIGN KEY`
+
+## Data Types
+
+### Categories
+
+1. **Numeric**
+2. **String**
+3. **Binary**
+4. **Date and Time**
+
+### String Data Types
+
+- **Fixed Length:** `CHAR`
+- **Variable Length:** `VARCHAR`
+- **Text Types:**
+  - Tiny text
+  - Text
+  - Medium text
+  - Long text
+
+### Numeric Data Types
+
+- Integer
+- Decimal
+
+## Database System Languages
+
+### Data Definition Language (DDL)
+
+- `CREATE`
+- `ALTER`
+- `DROP`
+
+### Data Manipulation Language (DML)
+
+- `INSERT`
+- `UPDATE`
+- `DELETE`
+
+### Data Query Language (DQL)
+
+- `SELECT`
+
+### Data Transaction Language (DTL)
+
+- Transaction control commands
+
+### Data Control Language (DCL)
+
+- Access control commands
+
+## Database Commands
+
+### Basic Commands
+
+- `SELECT DISTINCT FROM table;`
+- `WHERE`
+- `CREATE`
+- `SHOW`
+- `ALTER`
+- `ORDER BY`
+- `BETWEEN`
+- `IN`
+- `AS` (ALIAS)
+- `JOIN`
+- `LIKE` - used for pattern matching
+- `CONCAT` - join columns together
+
+## Database Schema
+
+### Definition
+
+Collection of data structures within a database and their relationships.
+
+In SQL Server, a database schema is a collection of different components like tables.
+
+### Types of Database Schema
+
+#### Logical DB Schema
+
+- Uses ER modeling
+- Shows relationships between table components
+
+#### Physical DB Schema
+
+- Physical implementation details
+
+## Database Normalization
+
+### Goal
+
+**THE GOAL OF NORMALIZATION IS TO REMOVE DATA DUPLICATION.**
+
+### Normalization Challenges
+
+- **Insert Anomaly:** When insertion of new data requires the addition of another data
+- **Update Anomaly**
+- **Deletion Anomaly**
+
+### Benefits
+
+- Prevents data duplication
+- Optimizes database design by creating single purpose for each table
+
+### Normalization Forms
+
+#### First Normal Form (1NF)
+
+- **Atomicity Rule**
+- Table should have one value per column field
+- Avoid repeating attributes in tables
+
+#### Second Normal Form (2NF)
+
+- All non-key attributes must depend on the entire primary key value
+- Eliminates partial dependency
+- Remove all partial dependencies and put them into separate tables
+
+#### Third Normal Form (3NF)
+
+- Eliminates transitive dependency
+- A non-key attribute should not depend on another non-key attribute
+- Should only depend on unique key attributes
+
+### Key Concepts
+
+- **Functional Dependency:** Explains the relationship between 2 attributes in a table
+- **Partial Dependency:** Refers to a table with composite keys
+
+## Logical Operators
+
+Filtering data in SQL involves using logical operators:
+
+- `AND`
+- `OR`
+- `NOT`
+- `BETWEEN` - select values within a given range
+- `IN` - include multiple values in WHERE clause (behaves like multiple ORs)
+- `LIKE` - filter data based on pattern matching
+
+## Aliases in Database
+
+SQL aliases provide database columns and tables with temporary names.
+
+## Types of Joins
+
+Joins are used to combine tables.
+
+### Inner Join
+
+- Extracts records that have matching values in both tables (left & right tables)
+
+**Code Example:**
+
+```sql
+SELECT customer.customerName
+FROM customer
+INNER JOIN orders ON customer.customerID = orders.customerID;
+```
+
+### Left Join
+
+- Extracts all records from the left table and matching records from the right table
+
+**Code Example:**
+
+```sql
+SELECT c.customerName, c.lastName, o.orderId, o.orderDate, o.quantity, o.totalAmount
+FROM customer AS c
+LEFT JOIN orders AS o ON c.customerId = o.customerId;
+```
+
+### Right Join
+
+- Extracts all records from the right table and matching records from the left table
+
+**Code Example:**
+
+```sql
+SELECT c.customerName, c.lastName, o.orderId, o.orderDate, o.quantity, o.totalAmount
+FROM customer AS c
+RIGHT JOIN orders AS o ON c.customerId = o.customerId;
+```
+
+### Self Join
+
+- A table is joined with itself to retrieve information that exists within the same table
+
+## SQL Operators
+
+### Union
+
+- Combine result sets from multiple statements in the same query
+- Join 2 SELECT statements and present as one table
+
+### Group By
+
+- Group similar values into a single record
+- Example: `SELECT customerID FROM orders GROUP BY customerID`
+- Can be used with SQL aggregate functions like `SUM`, `COUNT`, etc.
+
+### Having
+
+- Specifies a filter condition for groups of rows and aggregates
+- Should be used with `GROUP BY` command
+
+## MySQL Constraints
+
+### Types of Constraints
+
+#### Key Constraints
+
+- Primary key should always be unique
+
+#### Domain Constraints
+
+- Restriction on columns using `CHECK`
+
+#### Referential Integrity Constraints
+
+- For both primary key and foreign key in referencing and referenced tables
+
+## Basic SQL Syntax
+
+### ALTER
+
+- Modify, add, and drop table structures
+
+### Copy Table
+
+```sql
+CREATE TABLE new_table_name SELECT * FROM existing_table_name;
+```
+
+### Subquery
+
+- A query within another query
+- Inner query placed within an outer query
+- **Commands used with subqueries:**
+  - `ANY`
+  - `ALL`
+  - `SOME`
+  - `EXISTS`
+  - `NOT EXISTS`
+
+## Virtual Tables in MySQL
+
+### Views
+
+- Virtual tables created from one or multiple tables
+- **Uses:**
+  - Create subset of a table's data
+  - Combine data from multiple tables
+
+## Functions and Types in MySQL
+
+### Function Categories
+
+1. **Numeric Functions**
+2. **String Functions**
+3. **Control Flow Functions**
+
+### Stored Procedures
+
+- A block of code that can be stored in your database and re-invoked when needed
+- **Key Difference between Functions and Stored Procedures:**
+  - **Function:** Only has input parameters
+  - **Stored Procedure:** Can have both input and output parameters
